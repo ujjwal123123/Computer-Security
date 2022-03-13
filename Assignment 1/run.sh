@@ -1,0 +1,1 @@
+yara rules.yara malwares -r
