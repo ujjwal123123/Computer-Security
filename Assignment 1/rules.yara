@@ -6,8 +6,6 @@ rule WannaCry {
 }
 
 rule pegasus {
-    meta:
-        KEY = "VALUE"
     strings:
         $s0 = "seC.dujmehn.qdtheyt" wide
     condition:
