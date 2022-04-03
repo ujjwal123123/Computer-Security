@@ -1,0 +1,35 @@
+# sample snort rules as given in the manual
+alert tcp any any -> 192.168.1.1 80 (
+    msg: "A ha!";
+    content: "attack";
+    sid: 1;
+)
+
+# second example from the manual
+alert http $EXTERNAL_NET -> $HOME_NET (
+    msg: "Gotcha!";
+    flow: established, to_server;
+    http_uri: "attack";
+    sid: 2;
+)
+
+# snort rule for blocking SSH traffic
+drop ssh $EXTERNAL_NET -> $HOME_NET (
+    msg: "SSH traffic dropped";
+    content: "SSH";
+    sid: 3;
+)
+
+# log FTP traffic
+log ftp $EXTERNAL_NET -> $HOME_NET (
+    msg: "FTP traffic detected";
+    content: "FTP";
+    sid: 4;
+)
+
+# log ICMP traffic
+log icmp $EXTERNAL_NET -> $HOME_NET (
+    msg: "Ping request received";
+    content: "ICMP";
+    sid: 5;
+)
